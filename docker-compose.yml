@@ -16,7 +16,7 @@ services:
     environment:
       - COUCHDB_USER=user
       - COUCHDB_PASSWORD=pass
-      - NODENAME=172.20.0.2
+      - NODENAME=172.26.37.212
     container_name: couch_master
     networks:
       couchdb_nw:
@@ -31,11 +31,11 @@ services:
     environment:
       - COUCHDB_USER=user
       - COUCHDB_PASSWORD=pass
-      - NODENAME=172.20.0.3
+      - NODENAME=172.26.37.195
     container_name: couch_slave1
     networks:
       couchdb_nw:
-        ipv4_address: 172.20.0.3
+        ipv4_address: 172.26.37.195
   couch_slave2:
     image: "couchdb:2.3.0"
     restart: always
