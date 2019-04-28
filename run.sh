@@ -3,9 +3,9 @@
 echo "== Set variables =="
 
 declare -a nodes=(172.26.37.212 172.26.37.195 172.26.38.31)
-declare -a ports=(32772 32769 32769)
+declare -a ports=(1000 1000 1000)
 export master_node=172.26.37.212
-export master_port=32772
+export master_port=1000
 export size=${#nodes[@]}
 export user=user
 export pass=pass
@@ -16,7 +16,7 @@ sleep 10
 
 echo "== Enable cluster setup =="
 for (( i=0; i<${size}; i++ )); do
-  curl -X POST "http://${user}:${pass}@localhost:${ports[${i}]}/_cluster_setup" -H 'Content-Type: application/json' \
+  curl -X POST "http://${user}:${pass}@localhost:${ports[${i}]}/_cluster_setup" -H 'Content-Type: application/json' \ 
     -d "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\", \"username\": \"${user}\", \"password\":\"${pass}\", \"node_count\":\"${size}\"}"
 done
 

@@ -20,9 +20,9 @@ services:
     container_name: couch_master
     networks:
       couchdb_nw:
-        ipv4_address: 172.20.0.2
+        ipv4_address: 172.26.37.212
   couch_slave1:
-    image: "couchdb:2.3.0"
+    image: "couchdb"
     restart: always
     ports:
       - "15984:5984"
@@ -37,7 +37,7 @@ services:
       couchdb_nw:
         ipv4_address: 172.26.37.195
   couch_slave2:
-    image: "couchdb:2.3.0"
+    image: "couchdb"
     restart: always
     ports:
       - "25984:5984"
@@ -46,11 +46,11 @@ services:
     environment:
       - COUCHDB_USER=user
       - COUCHDB_PASSWORD=pass
-      - NODENAME=172.20.0.4
+      - NODENAME=172.26.38.31
     container_name: couch_slave2
     networks:
       couchdb_nw:
-        ipv4_address: 172.20.0.4
+        ipv4_address: 172.26.38.31
 
 networks:
   couchdb_nw:
