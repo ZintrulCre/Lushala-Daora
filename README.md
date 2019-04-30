@@ -1,12 +1,12 @@
 # To do:
 
-- x
-- xx
-- xxx
+- ansible
+- couchdb script
+- data
+- front-end
+- back-end
 
 # Done:
 
-- x
-- xx
-- xxx
+: )
 
