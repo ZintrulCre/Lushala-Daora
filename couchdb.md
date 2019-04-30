@@ -6,4 +6,3 @@ deploy couchdb <https://github.com/AURIN/comp90024/tree/master/couchdb>
 4. (other instances) docker swarm join --token XXXXXXXXXXXXXXXXXXXXX
 5. (main instance) docker service create --replicas 3 -p 5984:5984 couchdb
 6. docker service ls
-
