@@ -11,6 +11,8 @@ if len(sys.argv) == 2 and sys.argv[1] == '-h':
 elif len(sys.argv) == 7:
     os.system("sudo apt install python-pip")
     os.system("sudo pip install couchdb")
+    os.system("sudo apt install python3-pip")
+    os.system("sudo pip3 install couchdb")
     import couchdb
 
     ip = sys.argv[1]
