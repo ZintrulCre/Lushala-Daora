@@ -9,7 +9,4 @@ deploy couchdb <https://github.com/AURIN/comp90024/tree/master/couchdb>
 
 
 
-7. create db
-   - curl -X PUT http://172.26.37.212:5984/melbourne
-8. 
-
+Twitter-Cloud-Processing/Data/FileToCouchdb.py
