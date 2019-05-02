@@ -9,7 +9,8 @@ if len(sys.argv) == 2 and sys.argv[1] == '-h':
     # print("Retrive: python3 FileToCouchdb.py -r <id>")
     sys.exit()
 elif len(sys.argv) == 7:
-    os.system("pip install couchdb")
+    os.system("sudo apt install python-pip")
+    os.system("sudo pip install couchdb")
     import couchdb
 
     ip = sys.argv[1]
