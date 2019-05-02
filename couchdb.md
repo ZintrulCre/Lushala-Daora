@@ -7,3 +7,9 @@ deploy couchdb <https://github.com/AURIN/comp90024/tree/master/couchdb>
 5. (main instance) docker service create --replicas 3 -p 5984:5984 couchdb
 6. docker service ls
 
+
+
+7. create db
+   - curl -X PUT http://172.26.37.212:5984/melbourne
+8. 
+
