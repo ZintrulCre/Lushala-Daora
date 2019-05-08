@@ -36,7 +36,8 @@ elif len(sys.argv) == 7:
             line = line.strip().strip(',')
             content = json.loads(line)
             text = content['doc']['text']
-            doc_id, doc_rev = db.save({'text': text})
+            coordinates = content['doc']['coordinates']
+            doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates})
             print(doc_id, doc_rev)
 else:
     print("Wrong arguments!")
