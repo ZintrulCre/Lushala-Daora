@@ -35,9 +35,15 @@ elif len(sys.argv) == 7:
                 break
             line = line.strip().strip(',')
             content = json.loads(line)
+            if not content['doc']['coordinates']:
+                continue
             text = content['doc']['text']
-            coordinates = None if not content['doc']['coordinates'] else content['doc']['coordinates']['coordinates']
-            user = content['doc']['user']['id_str']
+            coordinates = content['doc']['coordinates']['coordinates']
+            user = {}
+            user['id'] = content['doc']['user']['id_str']
+            user['name'] = content['doc']['user']['name']
+            user['location'] = content['doc']['user']['location']
+            user['description'] = content['doc']['user']['description']
             time = content['doc']['created_at']
             doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates, 'user': user, 'time': time})
             print(doc_id, doc_rev)
