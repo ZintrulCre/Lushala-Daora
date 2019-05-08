@@ -1,7 +1,5 @@
 import os
 import sys
-import json
-import time
 
 if len(sys.argv) == 2 and sys.argv[1] == '-h':
     print("Insert: python3 FileToCouchdb.py <ip> <port> <database> <user> <password> <file>")
@@ -14,6 +12,8 @@ elif len(sys.argv) == 7:
     os.system("sudo apt install python3-pip")
     os.system("sudo pip3 install couchdb")
     import couchdb
+    import json
+    import time
 
     ip = sys.argv[1]
     port = sys.argv[2]
@@ -37,7 +37,9 @@ elif len(sys.argv) == 7:
             content = json.loads(line)
             text = content['doc']['text']
             coordinates = None if not content['doc']['coordinates'] else content['doc']['coordinates']['coordinates']
-            doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates})
+            user = content['doc']['user']['id_str']
+            time = content['doc']['created_at']
+            doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates, 'user': user, 'time': time})
             print(doc_id, doc_rev)
 else:
     print("Wrong arguments!")
