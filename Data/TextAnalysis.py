@@ -12,7 +12,7 @@ class GreedAnalysis:
     stemmer = nltk.stem.PorterStemmer()
     brown_ic = wordnet_ic.ic('ic-brown.dat')
 
-    def RetrieveLemma(self, synset, word: str):
+    def RetrieveLemma(self, synset, word:
         for lemma in synset.lemmas():
             if lemma.name().lower() == word:
                 return lemma
