@@ -20,10 +20,10 @@ processor_2['twitter-geo-rec'] = [143.582020,-38.1106607, 145.873154,-37.6421353
 
 # processor_3
 processor_3 = {}
-processor_3['consumer_key'] = '9uWwELoYRA4loNboCqe4P7XZD'
-processor_3['consumer_secret'] = 'ZhIOn2XPAnVtDjbh4iVrANG4gq7zTCJdJZAAlDpPmKAFpNz4gF'
-processor_3['access_token'] = '2344719422-4a94VSU2kjHzgFp1Kap9uoAAvE5R2n9vb4H5Atz'
-processor_3['access_token_secret'] = 'O5H5r7QyOTct7yFFlePITJGcuIJPBmgyDBunIYRVjYELq'
+processor_3['consumer_key'] = 'SaTo8PE3JvfoUEYWd8V4B2z76'
+processor_3['consumer_secret'] = 'afaOvyXX0gC8GagenMsxVWUSoNvKrYNST1dvtAx3V0M3RpFKd9'
+processor_3['access_token'] = '861799416553816064-ha2qH37eMjP16eMaRY5uXyNBYsNpd6g'
+processor_3['access_token_secret'] = 'Cg7mYxcWEzLoEdEvWYia4aBLLOokXsQ2jH4ZwAbG9z7eH'
 processor_3['twitter-geo-latlngrad'] = '-38.366,145.598,100.00km'
 processor_3['twitter-geo-rec'] = [143.582020,-38.579186 , 145.873154, -38.1106607]
 
