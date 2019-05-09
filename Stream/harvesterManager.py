@@ -16,19 +16,18 @@ logger.addHandler(file_handler)
 
 if __name__ == '__main__':
     try:
+        db = sys.argv[1]
         # The user is expected to tell which processor should be run
-        harvester_id = int(sys.argv[1])
+        harvester_id = int(sys.argv[2])
         # If user inputs a valid since_id, pass it to searchAPIHarvester
         try:
-            since_id = int(sys.argv[2])
+            since_id = int(sys.argv[3])
         except Exception:
             since_id = None
 
         # Fetch the corresponding processor's configuration information
         conf = configs[harvester_id]
-        couchserver = couchdb.Server('http://'+conf['couchdb-admin-username']+':'
-                                     +conf['couchdb-admin-password'] + '@'
-                                     +conf['couchdb-address'])
+        couchserver = couchdb.Server('http://'+conf['couchdb'] + '/' + db)
         db = couchserver[conf['couchdb-db-name']]
 
         logger.info('Database connection established')
