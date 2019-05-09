@@ -1,16 +1,9 @@
 import json
-import logging
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler('check_location_handler.log')
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
 
-# This class is used to check which SA2 code a point belongs to
+# check point
 class Check_Location_Handler():
 
-    # Check whether a point is inside a polygon
+    # check polygon
     @staticmethod
     def point_inside_polygon(log, lat, poly):
         num = len(poly)
@@ -24,11 +17,11 @@ class Check_Location_Handler():
             j = i
         return c
 
-    # Fetch polygon parameter from json file
+    # get polygon
     @staticmethod
     def append_attribute(log, lat):
         try:
-            file_name = 'yiyi_mel_geojson.json'
+            file_name = 'GeoJson.json'
 
             with open(file_name, 'r') as grid_file:
                 json_data = json.load(grid_file)
@@ -38,7 +31,7 @@ class Check_Location_Handler():
                         return block['properties']
 
         except Exception as e:
-            logger.error(str(e))
+            pass
 
         return None
 

@@ -2,7 +2,7 @@ import os
 import sys
 
 if len(sys.argv) == 2 and sys.argv[1] == '-h':
-    print("Insert: python3 FileToCouchdb.py <ip> <port> <database> <user> <password> <file>")
+    print("python3 FileToCouchdb.py <ip> <port> <database> <user> <password> <file>")
     sys.exit()
 elif len(sys.argv) == 7:
     os.system("sudo apt install python-pip")
