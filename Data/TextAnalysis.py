@@ -50,7 +50,7 @@ class GreedAnalysis:
                 break
         
         polarity = TextBlob(text).sentiment.polarity
-        print(polarity)
+        # print(polarity)
         # subjectivity = TextBlob(text).sentiment.subjectivity
         
         result = True if ((polarity > 0 and related) or (polarity < 0 and not related)) else False
