@@ -3,8 +3,6 @@ import sys
 
 if len(sys.argv) == 2 and sys.argv[1] == '-h':
     print("Insert: python3 FileToCouchdb.py <ip> <port> <database> <user> <password> <file>")
-    # print("Query: python3 FileToCouchdb.py -q")
-    # print("Retrive: python3 FileToCouchdb.py -r <id>")
     sys.exit()
 elif len(sys.argv) == 7:
     os.system("sudo apt install python-pip")
@@ -14,6 +12,9 @@ elif len(sys.argv) == 7:
     import couchdb
     import json
     import time
+    from TextAnalysis import GreedAnalysis
+
+    greedy_analysis = GreedAnalysis()
 
     ip = sys.argv[1]
     port = sys.argv[2]
@@ -21,7 +22,6 @@ elif len(sys.argv) == 7:
     user = sys.argv[4]
     password = sys.argv[5]
     file = sys.argv[6]
-
     server = couchdb.Server("http://" + user + ":" + password + "@" + ip + ":" + port + "/")
     if database in server:
         db = server[database]
@@ -38,14 +38,17 @@ elif len(sys.argv) == 7:
             if not content['doc']['coordinates']:
                 continue
             text = content['doc']['text']
-            coordinates = content['doc']['coordinates']['coordinates']
+            coordinates = None if not content['doc']['coordinates'] else content['doc']['coordinates']['coordinates']
             user = {}
             user['id'] = content['doc']['user']['id_str']
             user['name'] = content['doc']['user']['name']
             user['location'] = content['doc']['user']['location']
             user['description'] = content['doc']['user']['description']
             time = content['doc']['created_at']
-            doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates, 'user': user, 'time': time})
+
+            greedy = greedy_analysis.Analyze(text)
+
+            doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates, 'user': user, 'time': time, 'greedy': greedy})
             print(doc_id, doc_rev)
 else:
     print("Wrong arguments!")
