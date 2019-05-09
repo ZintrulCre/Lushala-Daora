@@ -36,7 +36,6 @@ class GreedAnalysis:
     def Analyze(self, text):
         related = False
         tokens = nltk.word_tokenize(text)
-        print(tokens)
         for i in range(len(tokens)):
             tokens[i] = self.stemmer.stem(tokens[i].lower())
             for word in self.thesaurus:
