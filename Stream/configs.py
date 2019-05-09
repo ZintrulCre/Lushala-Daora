@@ -11,9 +11,10 @@ processor_1['twitter-geo-rec'] = [143.582020, -37.6421353, 145.873154, -37.17361
 
 # processor_2
 processor_2 = {}
-processor_2['consumer_secret'] = 'SmyRN8xwJCIVY4uBIhAIVmgHcKbgzEOtSPtlOoTHnwPesdNvY3'
-processor_2['access_token'] = '891019089396629504-ThXONEZLKUX0GVDBC8Gx4Ly3XuWLUDb'
-processor_2['access_token_secret'] = '0ruVM0bCudA9TwrgoBZMso8zkTQ3oz89KNB1lOdzgNaTZ'
+processor_2['consumer_key'] = 'SCijsE5RwI5WvBPTkqDHj81qw'
+processor_2['consumer_secret'] = 'BJGIczGnZrJCGyr5pAnBF8e3k1nSEjqK3r2fqy5Gch56IL4aTm'
+processor_2['access_token'] = '891019089396629504-25Y3PezORiZyCIy2GAwAeFVrcAeXHRa'
+processor_2['access_token_secret'] = 'vTF05w0Mx0R3FeuqArgvCUBQyB4D0SEhASr3fTqJcbIVN'
 processor_2['twitter-geo-latlngrad'] = '-37.743,144.280,100.00km'
 processor_2['twitter-geo-rec'] = [143.582020,-38.1106607, 145.873154,-37.6421353]
 
