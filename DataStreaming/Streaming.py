@@ -3,7 +3,7 @@ from textblob import TextBlob
 import logging
 import json
 import threading
-from check_location_handler import Check_Location_Handler
+from CheckLocation import CheckLocation
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -40,7 +40,7 @@ class Streaming(tweepy.StreamListener):
                     lat = status_json['coordinates']['coordinates'][1]
                     log = status_json['coordinates']['coordinates'][0]
 
-                    response_properties = Check_Location_Handler.append_attribute(log, lat)
+                    response_properties = CheckLocation.append_attribute(log, lat)
 
                     if response_properties is not None:
                         response_properties['sentiment'] = sentiment

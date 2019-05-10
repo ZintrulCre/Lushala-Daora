@@ -1,7 +1,7 @@
 import json
 
 # check point
-class Check_Location_Handler():
+class CheckLocation():
 
     # check polygon
     @staticmethod
@@ -27,7 +27,7 @@ class Check_Location_Handler():
                 json_data = json.load(grid_file)
 
                 for block in json_data['features']:
-                    if Check_Location_Handler.point_inside_polygon(log, lat, block['geometry']['coordinates'][0][0]):
+                    if CheckLocation.point_inside_polygon(log, lat, block['geometry']['coordinates'][0][0]):
                         return block['properties']
 
         except Exception as e:

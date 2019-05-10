@@ -2,7 +2,7 @@ import tweepy
 from textblob import TextBlob
 import logging
 import threading
-from check_location_handler import Check_Location_Handler
+from CheckLocation import CheckLocation
 
 
 logger = logging.getLogger(__name__)
@@ -84,7 +84,7 @@ class Processing(threading.Thread):
                             lat = tweet['coordinates']['coordinates'][1]
                             log = tweet['coordinates']['coordinates'][0]
 
-                            response_properties = Check_Location_Handler.append_attribute(
+                            response_properties = CheckLocation.append_attribute(
                                 log, lat)
 
                             if response_properties is not None:
