@@ -7,12 +7,6 @@
   - curl "http://45.113.232.90/couchdbro/twitter/_design/twitter/_view/summary" -G --data-urlencode 'start_key=["melbourne",2017,6,1]' --data-urlencode 'end_key=["melbourne",2017,12,31]' --data-urlencode 'reduce=false' --data-urlencode 'include_docs=true' --user "readonly:ween7ighai9gahR6" -o /data/twitter-melbourne-20170601-20171231.json
   - curl "http://45.113.232.90/couchdbro/twitter/_design/twitter/_view/summary" -G --data-urlencode 'start_key=["melbourne",2018,1,1]' --data-urlencode 'end_key=["melbourne",2018,12,31]' --data-urlencode 'reduce=false' --data-urlencode 'include_docs=true' --user "readonly:ween7ighai9gahR6" -o /data/twitter-melbourne-20180101-20181231.json
 
-- sydney
-
-  - curl "http://45.113.232.90/couchdbro/twitter/_design/twitter/_view/summary" -G --data-urlencode 'start_key=["sydney",2018,1,1]' --data-urlencode 'end_key=["sydney",2018,12,31]' --data-urlencode 'reduce=false' --data-urlencode 'include_docs=true' --user "readonly:ween7ighai9gahR6" -o /data/twitter-sydney-20180101-20181231.json
-
-  - curl "http://45.113.232.90/couchdbro/twitter/_design/twitter/_view/summary" -G --data-urlencode 'start_key=["sydney",2017,1,1]' --data-urlencode 'end_key=["sydney",2017,12,31]' --data-urlencode 'reduce=false' --data-urlencode 'include_docs=true' --user "readonly:ween7ighai9gahR6" -o /data/twitter-sydney-20170101-20171231.json
-  - curl "http://45.113.232.90/couchdbro/twitter/_design/twitter/_view/summary" -G --data-urlencode 'start_key=["sydney",2016,1,1]' --data-urlencode 'end_key=["sydney",2016,12,31]' --data-urlencode 'reduce=false' --data-urlencode 'include_docs=true' --user "readonly:ween7ighai9gahR6" -o /data/twitter-sydney-20160101-20161231.json
 
 2. aggregate tweets by city, the "summary" view can be used
 

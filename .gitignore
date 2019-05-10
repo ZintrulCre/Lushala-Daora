@@ -1,4 +1,4 @@
 DataStreaming/configs.py
 *.pyc
 *.log
-key
+key/*
