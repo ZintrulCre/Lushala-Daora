@@ -1,8 +1,11 @@
 import sys
 
 if len(sys.argv) == 2 and sys.argv[1] == '-h':
-    print("python3 Main.py <ip> <port> <database> <user> <password> <stream_id>(1,2,3 in config.py) <begin_id>(optional)")
+    print("python3 Main.py <ip> <port> <database> <user> <password> <config_id>(config.py) <begin_id>(optional)")
     sys.exit()
+elif len(sys.argv) != 7 or len(sys.argv) != 8:
+    print("Wrong parameters!")
+    print("Input -h for help.")
 
 import os
 import couchdb
@@ -21,7 +24,7 @@ port = sys.argv[2]
 database = sys.argv[3]
 user = sys.argv[4]
 password = sys.argv[5]
-stream_id = int(sys.argv[6])
+config_id = int(sys.argv[6])
 if len(sys.argv) == 8:
     begin_id = int(sys.argv[7])
 else:
@@ -32,14 +35,14 @@ if database in server:
     db = server[database]
 else:
     db = server.create(database)
-conf = configs[stream_id]
+conf = configs[config_id]
 
 print('Database connected.')
 
 thread_tweetPrc = TweetProcessor(conf['consumer_key'], conf['consumer_secret'], conf['access_token'],
-                                 conf['access_token_secret'], conf['twitter-geo-latlngrad'], str(stream_id), db, begin_id)
+                                 conf['access_token_secret'], conf['twitter-geo-latlngrad'], str(config_id), db, begin_id)
 thread_tweetstreamPrc = TweetStreamProcessor(conf['consumer_key'], conf['consumer_secret'],
-                                             conf['access_token'], conf['access_token_secret'], conf['twitter-geo-rec'], str(stream_id), db)
+                                             conf['access_token'], conf['access_token_secret'], conf['twitter-geo-rec'], str(config_id), db)
 print('Processor created.')
 print('StreamProcessor created.')
 
