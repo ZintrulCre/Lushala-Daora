@@ -46,9 +46,9 @@ elif len(sys.argv) == 7:
             user['description'] = content['doc']['user']['description']
             time = content['doc']['created_at']
 
-            greedy = greedy_analysis.Analyze(text)
+            result = greedy_analysis.Analyze(text)
 
-            doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates, 'user': user, 'time': time, 'greedy': greedy})
+            doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates, 'user': user, 'time': time, 'result': result})
             print(doc_id, doc_rev)
 else:
     print("Wrong arguments!")

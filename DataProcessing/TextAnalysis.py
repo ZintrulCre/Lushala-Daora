@@ -8,7 +8,11 @@ from nltk.corpus import wordnet
 from nltk.corpus import wordnet_ic
 
 class GreedAnalysis:
-    thesaurus = ['greed']
+    thesaurus = []
+    with open('Lazy.txt') as T:
+        for t in T:
+            thesaurus.append(t.strip())
+    print(thesaurus)
     stemmer = nltk.stem.PorterStemmer()
     brown_ic = wordnet_ic.ic('ic-brown.dat')
 
@@ -53,6 +57,5 @@ class GreedAnalysis:
         # print(polarity)
         # subjectivity = TextBlob(text).sentiment.subjectivity
         
-        result = True if ((polarity > 0 and related) or (polarity < 0 and not related)) else False
-        greedy_sentiment = {'related': related, 'polarity': polarity, 'result': result}
-        return greedy_sentiment
+        result = {'related': related, 'polarity': polarity}
+        return result
