@@ -7,12 +7,12 @@ from check_location_handler import Check_Location_Handler
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler('stream-api.log')
+file_handler = logging.FileHandler('Streaming.log')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
-class MyStreamListener(tweepy.StreamListener):
+class Streaming(tweepy.StreamListener):
 
     def __init__(self, processor_id, couchdb, api):
         super(tweepy.StreamListener, self).__init__()
@@ -93,8 +93,8 @@ class TweetStreamProcessor(threading.Thread):
 
     def run(self):
         try:
-            myStreamListener = MyStreamListener(self.processor_id, self.couchdb, self.api)
-            myStream = tweepy.Stream(auth=self.api.auth, listener=myStreamListener)
+            Streaming = Streaming(self.processor_id, self.couchdb, self.api)
+            myStream = tweepy.Stream(auth=self.api.auth, listener=Streaming)
             # Process tweets from the filter.json API endpoint, and passing them to listener
             myStream.filter(locations=self.twitter_geo_param_rec)
         except Exception as e:

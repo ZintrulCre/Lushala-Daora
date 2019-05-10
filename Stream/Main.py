@@ -3,19 +3,20 @@ import sys
 if len(sys.argv) == 2 and sys.argv[1] == '-h':
     print("python3 Main.py <ip> <port> <database> <user> <password> <config_id>(config.py) <begin_id>(optional)")
     sys.exit()
-elif len(sys.argv) != 7 or len(sys.argv) != 8:
+elif len(sys.argv) < 7 or len(sys.argv) > 8:
     print("Wrong parameters!")
     print("Input -h for help.")
+    sys.exit()
 
 import os
 import couchdb
 from configs import configs
-from searchAPIHarvester import TweetProcessor
-from streamAPIHarvester import TweetStreamProcessor
+from SearchProcessing import Processing
+from Streaming import TweetStreamProcessor
 os.system("sudo apt install python-pip")
 os.system("sudo apt install python3-pip")
-os.system("pip install --upgrade pip")
-os.system("pip3 install --upgrade pip")
+os.system("sudo pip install --upgrade pip")
+os.system("sudo pip3 install --upgrade pip")
 os.system("sudo pip install -r requirements.txt")
 os.system("sudo pip3 install -r requirements.txt")
 
@@ -39,15 +40,16 @@ conf = configs[config_id]
 
 print('Database connected.')
 
-thread_tweetPrc = TweetProcessor(conf['consumer_key'], conf['consumer_secret'], conf['access_token'],
+processing_thread = Processing(conf['consumer_key'], conf['consumer_secret'], conf['access_token'],
                                  conf['access_token_secret'], conf['twitter-geo-latlngrad'], str(config_id), db, begin_id)
-thread_tweetstreamPrc = TweetStreamProcessor(conf['consumer_key'], conf['consumer_secret'],
+streaming_thread = TweetStreamProcessor(conf['consumer_key'], conf['consumer_secret'],
                                              conf['access_token'], conf['access_token_secret'], conf['twitter-geo-rec'], str(config_id), db)
-print('Processor created.')
-print('StreamProcessor created.')
+print('Processing thread created.')
+print('Streaming thread created.')
 
 # Running two threads at the same time
-thread_tweetstreamPrc.start()
-thread_tweetPrc.start()
+processing_thread.start()
+streaming_thread.start()
 
-print("Streaming. Enter ctrl + z to exit.")
+print("Streaming. Open " + ip + ":" + port + "/_utils/#database/" + database + "/_all_docs to see process.")
+print("Enter ctrl + z to exit.")
