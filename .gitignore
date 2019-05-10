@@ -1,3 +1,2 @@
-
-*.log
-Stream/configs.py
+DataStreaming/configs.py
+*.pyc
