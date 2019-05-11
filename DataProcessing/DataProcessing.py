@@ -7,8 +7,10 @@ if len(sys.argv) == 2 and sys.argv[1] == '-h':
 elif len(sys.argv) == 7:
     os.system("sudo apt install python-pip")
     os.system("sudo apt install python3-pip")
-    os.system("sudo pip install couchdb")
-    os.system("sudo pip3 install couchdb")
+    os.system("sudo pip install --upgrade pip")
+    os.system("sudo pip3 install --upgrade pip")
+    os.system("sudo pip install -r requirements.txt")
+    os.system("sudo pip3 install -r requirements.txt")
     import couchdb
     import json
     import time
@@ -22,7 +24,8 @@ elif len(sys.argv) == 7:
     user = sys.argv[4]
     password = sys.argv[5]
     file = sys.argv[6]
-    server = couchdb.Server("http://" + user + ":" + password + "@" + ip + ":" + port + "/")
+    server = couchdb.Server("http://" + user + ":" +
+                            password + "@" + ip + ":" + port + "/")
     if database in server:
         db = server[database]
     else:
@@ -48,7 +51,8 @@ elif len(sys.argv) == 7:
 
             result = analysis.Analyze(text)
 
-            doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates, 'user': user, 'time': time, 'result': result})
+            doc_id, doc_rev = db.save(
+                {'text': text, 'coordinates': coordinates, 'user': user, 'time': time, 'result': result})
             print(doc_id, doc_rev)
 else:
     print("Wrong arguments!")
