@@ -12,7 +12,7 @@ import os
 import couchdb
 from configs import configs
 from SearchProcessing import Processing
-from Streaming import TweetStreamProcessor
+from Streaming import Streaming
 os.system("sudo apt install python-pip")
 os.system("sudo apt install python3-pip")
 os.system("sudo pip install --upgrade pip")
@@ -42,7 +42,7 @@ print('Database connected.')
 
 processing_thread = Processing(conf['consumer_key'], conf['consumer_secret'], conf['access_token'],
                                  conf['access_token_secret'], conf['twitter-geo-latlngrad'], str(config_id), db, begin_id)
-streaming_thread = TweetStreamProcessor(conf['consumer_key'], conf['consumer_secret'],
+streaming_thread = Streaming(conf['consumer_key'], conf['consumer_secret'],
                                              conf['access_token'], conf['access_token_secret'], conf['twitter-geo-rec'], str(config_id), db)
 print('Processing thread created.')
 print('Streaming thread created.')

@@ -12,7 +12,7 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
-class Streaming(tweepy.StreamListener):
+class StreamingListener(tweepy.StreamListener):
 
     def __init__(self, processor_id, couchdb, api):
         super(tweepy.StreamListener, self).__init__()
@@ -45,7 +45,7 @@ class Streaming(tweepy.StreamListener):
                     if response_properties is not None:
                         response_properties['sentiment'] = sentiment
                         process_info = {'properties': response_properties,'sentiment': sentiment, 'processor-id': self.processor_id}
-                        logger.info('With location:' + (str(status_json['id'])))
+                        logger.info('Location: ' + (str(status_json['id'])))
                     # For those coordinates not in the json grid
                     else:
                         process_info = {'sentiment': sentiment, 'processor-id': self.processor_id}
@@ -59,10 +59,10 @@ class Streaming(tweepy.StreamListener):
 
                 self.couchdb[str(tweet['id'])] = tweet
 
-            logger.info('StreamAPI tweet added to the database with id: ' + str(tweet['id']))
+            logger.info('Added id: ' + str(tweet['id']))
 
         except Exception as e:
-            logger.info(str(e) + ' Skipped stream twitter id:' + str(tweet['id']))
+            logger.info('Skipped id:' + str(tweet['id']) + '. Error: ' + str(e))
 
 
     def on_error(self, status_code):
@@ -72,7 +72,7 @@ class Streaming(tweepy.StreamListener):
             return False
 
 
-class TweetStreamProcessor(threading.Thread):
+class Streaming(threading.Thread):
 
     def __init__(self, twitter_consumer_key, twitter_consumer_secret, twitter_access_token,
                  twitter_access_token_secret, twitter_geo_param_rec, processor_id, couchdb):
@@ -93,8 +93,8 @@ class TweetStreamProcessor(threading.Thread):
 
     def run(self):
         try:
-            Streaming = Streaming(self.processor_id, self.couchdb, self.api)
-            myStream = tweepy.Stream(auth=self.api.auth, listener=Streaming)
+            streaming_listener = StreamingListener(self.processor_id, self.couchdb, self.api)
+            myStream = tweepy.Stream(auth=self.api.auth, listener=streaming_listener)
             # Process tweets from the filter.json API endpoint, and passing them to listener
             myStream.filter(locations=self.twitter_geo_param_rec)
         except Exception as e:

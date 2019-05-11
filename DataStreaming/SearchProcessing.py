@@ -91,7 +91,7 @@ class Processing(threading.Thread):
                                 response_properties['sentiment'] = sentiment
                                 process_info = {'properties': response_properties,
                                                 'sentiment': sentiment, 'processor-id': self.processor_id}
-                                logger.info('With location:' +
+                                logger.info('Location: ' +
                                             (str(tweet['id'])))
                             # For those coordinates not in the json grid
                             else:
@@ -106,14 +106,13 @@ class Processing(threading.Thread):
 
                         self.couchdb[str(tweet['id'])] = tweet
 
-                        logger.info(
-                            "SearchProcessing tweet added to the database with id: " + str(tweet['id']))
+                        logger.info("Added id: " + str(tweet['id']))
 
                     except Exception as e:
-                        logger.info(
-                            str(e) + " Skipped search twitter id:" + str(tweet['id']))
+                        logger.info("Skipped id:" +
+                                    str(tweet['id']) + ". Error: " + str(e))
 
-                logger.info("Downloaded {0} tweets".format(tweetCount))
+                logger.info("Total: " + tweetCount)
                 self.max_id = new_tweets[-1].id
 
             except tweepy.TweepError as e:

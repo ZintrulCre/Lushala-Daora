@@ -9,7 +9,7 @@ passive
 sleepy
 tired
 weary
-asleep on the job
+asleep
 comatose
 dallying
 dilatory
@@ -25,7 +25,6 @@ languorous
 lifeless
 loafing
 neglectful
-out of it
 procrastinating
 remiss
 shiftless
