@@ -8,7 +8,7 @@ nltk.download('all')
 nltk.download('wordnet_ic')
 
 
-class GreedAnalysis:
+class Analysis:
     thesaurus = []
     with open('Lazy.txt') as T:
         for t in T:
@@ -44,12 +44,12 @@ class GreedAnalysis:
         for i in range(len(tokens)):
             tokens[i] = self.stemmer.stem(tokens[i].lower())
             for word in self.thesaurus:
-                word_sense, token_sense = self.RetrievePrimarySense(
-                    word), self.RetrievePrimarySense(tokens[i])
+                word_sense, token_sense = self.RetrievePrimarySense(word), self.RetrievePrimarySense(tokens[i])
                 if not word_sense or not token_sense or word_sense.pos != token_sense.pos or word_sense.pos == 's' or word_sense.pos == 'a' or token_sense.pos == 's' or token_sense.pos == 'a':
                     continue
-                lin_similarities = word_sense.lin_similarity(
-                    token_sense, self.brown_ic)
+                print(word_sense.pos)
+                print(token_sense.pos)
+                lin_similarities = word_sense.lin_similarity(token_sense, self.brown_ic)
                 if lin_similarities >= 0.5:
                     related = True
                     break

@@ -12,9 +12,9 @@ elif len(sys.argv) == 7:
     import couchdb
     import json
     import time
-    from TextAnalysis import GreedAnalysis
+    from TextAnalysis import Analysis
 
-    greedy_analysis = GreedAnalysis()
+    analysis = Analysis()
 
     ip = sys.argv[1]
     port = sys.argv[2]
@@ -46,7 +46,7 @@ elif len(sys.argv) == 7:
             user['description'] = content['doc']['user']['description']
             time = content['doc']['created_at']
 
-            result = greedy_analysis.Analyze(text)
+            result = analysis.Analyze(text)
 
             doc_id, doc_rev = db.save({'text': text, 'coordinates': coordinates, 'user': user, 'time': time, 'result': result})
             print(doc_id, doc_rev)
