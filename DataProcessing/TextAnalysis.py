@@ -1,11 +1,12 @@
+from nltk.corpus import wordnet_ic
+from nltk.corpus import wordnet
+from nltk.corpus import brown
 from textblob import TextBlob
 import nltk
 import heapq as hq
 nltk.download('all')
 nltk.download('wordnet_ic')
-from nltk.corpus import brown
-from nltk.corpus import wordnet
-from nltk.corpus import wordnet_ic
+
 
 class GreedAnalysis:
     thesaurus = []
@@ -43,19 +44,21 @@ class GreedAnalysis:
         for i in range(len(tokens)):
             tokens[i] = self.stemmer.stem(tokens[i].lower())
             for word in self.thesaurus:
-                word_sense, token_sense = self.RetrievePrimarySense(word), self.RetrievePrimarySense(tokens[i])
-                if not word_sense or not token_sense or word_sense.pos != token_sense.pos:
+                word_sense, token_sense = self.RetrievePrimarySense(
+                    word), self.RetrievePrimarySense(tokens[i])
+                if not word_sense or not token_sense or word_sense.pos != token_sense.pos or word_sense.pos == 's' or word_sense.pos == 'a' or token_sense.pos == 's' or token_sense.pos == 'a':
                     continue
-                lin_similarities = word_sense.lin_similarity(token_sense, self.brown_ic)
+                lin_similarities = word_sense.lin_similarity(
+                    token_sense, self.brown_ic)
                 if lin_similarities >= 0.5:
                     related = True
                     break
             if related:
                 break
-        
+
         polarity = TextBlob(text).sentiment.polarity
         # print(polarity)
         # subjectivity = TextBlob(text).sentiment.subjectivity
-        
+
         result = {'related': related, 'polarity': polarity}
         return result
