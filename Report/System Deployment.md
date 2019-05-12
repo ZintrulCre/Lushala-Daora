@@ -8,9 +8,10 @@ We use Ansible and bash script to implement system deployment, including automat
 4. Create three volumes, each for 80 Gigabytes. For each instance in the cluster, format one of the three volumes to ext4 format, and mount it to the data folder under the root path.
 5. Modify ~/.ssh/config to allow ssh over proxy from GitHub, in order to clone and manager the repository for us.
 6. Modify /etc/environment to use UniMelb internal proxy, including http_proxy, https_proxy and ftp_proxy for accessing public internet, and no_proxy for accessing localhost.
-7. Install Docker.
-8. Modify /etc/systemd/system/docker.service.d/http-proxy.conf for Docker container to use UniMelb internal proxy, which is similar to /etc/environment
-9. For each instance, run the script \<script name\> to pull CouchDB:2.3.1 image, create and start the CouchDB container, modify the environment and the configuration inside the container to group the CouchDB containers on three separate instances into a cluster.
+7.Build the file system, creat directory, and mount the volumes
+8. Install Docker.
+9. Modify /etc/systemd/system/docker.service.d/http-proxy.conf for Docker container to use UniMelb internal proxy, which is similar to /etc/environment
+10. For each instance, run the script \<script name\> to pull CouchDB:2.3.1 image, create and start the CouchDB container, modify the environment and the configuration inside the container to group the CouchDB containers on three separate instances into a cluster.
 
 
 
