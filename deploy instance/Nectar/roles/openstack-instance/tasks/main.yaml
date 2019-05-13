@@ -1,0 +1,27 @@
+- name: Create a dict contains both instance name and volume name
+  set_fact:
+    instance_volume_info: "{{ instance_volume_info | default([]) + [dict(instance_names=item[0], os_vol_ids=item[1])] }}"
+  loop: "{{ instance_names | zip(os_vol_ids) | list}}"
+
+
+# Create three instances on Nectar
+- name: Create an instance
+  os_server:
+    name: '{{ item.instance_names }}'
+    image: '{{ instance_image }}'
+    key_name: '{{ instance_key_name }}'
+    flavor: '{{ instance_flavor }}'
+    availability_zone: '{{ availability_zone }}'
+    security_groups: '{{ sg_names }}'
+    volumes: '{{ item.os_vol_ids }}'
+    auto_floating_ip: yes
+    wait: yes
+    timeout: 600
+    state: present
+  loop: '{{ instance_volume_info }}'
+  register: os_instance
+
+- debug:
+    msg: "Instance {{ instance_name }} has been createdd. IP address is {{ os_instance.openstack.public_v4 }}"
+  when: os_instance.openstack is defined
+  
