@@ -1,0 +1,51 @@
+---
+- name: Install Dependencies
+  tags: 'volumes'
+  become: yes
+  apt:
+    name: ['e2fsprogs']
+    state: latest
+    install_recommends: no
+    update_cache: yes
+
+- name: Build File System
+  tags: 'volumes'
+  become: yes
+  filesystem:
+    fstype: ext4
+    dev: '{{ item.device }}'
+  when: item.device is defined
+  with_items:
+    - '{{ volumes }}'
+
+- name: Checking Folders
+  tags: 'volumes'
+  become: yes
+  stat:
+    path: '{{ item.mountpoint }}'
+  register: directory_status
+  with_items:
+    - '{{ volumes }}'
+
+- name: Creating Directory
+  tags: 'volumes'
+  become: yes
+  file:
+    path: '{{ item.item.mountpoint }}'
+    recurse: yes
+    state: directory
+  when: item.stat.exists == false
+  with_items:
+    - '{{ directory_status.results }}'  
+
+- name: Mount device
+  tags: 'volumes'
+  become: yes
+  mount:
+    path: '{{ item.mountpoint }}'
+    src: '{{ item.device }}'
+    fstype: ext4
+    state: mounted
+  when: item.device is defined
+  with_items:
+    - '{{ volumes }}'
