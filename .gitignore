@@ -2,4 +2,4 @@
 *.log
 key/*
 .vscode/
-*.DS_Store
+.DS_Store
