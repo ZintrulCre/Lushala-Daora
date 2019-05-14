@@ -13,9 +13,9 @@
     name: ['pip']
     state: latest
 
-# - name: Install openstacksdk
-#   sudo: true
-#   # become: yes
-#   pip:
-#     name: ['openstacksdk']
-#     state: latest
+- name: Install openstacksdk
+  sudo: true
+  # become: yes
+  pip:
+    name: ['openstacksdk']
+    state: latest
