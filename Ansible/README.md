@@ -43,4 +43,3 @@
 <https://docs.docker.com/config/daemon/systemd/#httphttps-proxy>
 
 11. docker pull couchdb
-

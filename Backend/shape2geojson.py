@@ -3,7 +3,6 @@ import codecs
 import json as js
 from json import dumps
 
-
 # read the shapefile
 def shp2geo(file="sa2.shp"):
     reader = shapefile.Reader(file)
