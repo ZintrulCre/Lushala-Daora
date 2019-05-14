@@ -16,16 +16,6 @@ class Analysis:
     brown_ic = wordnet_ic.ic('ic-brown.dat')
 
     def __init__(self):
-        # with open('greedy.txt') as T:
-        #     for t in T:
-        #         self.thesaurus.append(t.strip())
-        # print(self.thesaurus)
-
-        # with open('greedy.csv') as G:
-        #     for g in G:
-        #         self.tags.append(g.strip())
-        # print(self.tags)
-
         with open('gluttony.txt') as G:
             for g in G:
                 self.gluttony.append(g.strip())
@@ -60,21 +50,21 @@ class Analysis:
                 related = True
                 break
 
-        # tokens = nltk.word_tokenize(text)
-        # for i in range(len(tokens)):
-        #     tokens[i] = self.stemmer.stem(tokens[i].lower())
-        #     for word in self.thesaurus:
-        #         word_sense, token_sense = self.RetrievePrimarySense(word), self.RetrievePrimarySense(tokens[i])
-        #         if not word_sense or not token_sense or word_sense.pos != token_sense.pos or word_sense.pos == 's' or word_sense.pos == 'a' or token_sense.pos == 's' or token_sense.pos == 'a':
-        #             continue
-        #         print(word_sense.pos)
-        #         print(token_sense.pos)
-        #         lin_similarities = word_sense.lin_similarity(token_sense, self.brown_ic)
-        #         if lin_similarities >= 0.5:
-        #             related = True
-        #             break
-        #     if related:
-        #         break
+        tokens = nltk.word_tokenize(text)
+        for i in range(len(tokens)):
+            tokens[i] = self.stemmer.stem(tokens[i].lower())
+            for word in self.thesaurus:
+                word_sense, token_sense = self.RetrievePrimarySense(word), self.RetrievePrimarySense(tokens[i])
+                if not word_sense or not token_sense or word_sense.pos != token_sense.pos or word_sense.pos == 's' or word_sense.pos == 'a' or token_sense.pos == 's' or token_sense.pos == 'a':
+                    continue
+                print(word_sense.pos)
+                print(token_sense.pos)
+                lin_similarities = word_sense.lin_similarity(token_sense, self.brown_ic)
+                if lin_similarities >= 0.5:
+                    related = True
+                    break
+            if related:
+                break
 
         polarity = TextBlob(text).sentiment.polarity
         # print(polarity)

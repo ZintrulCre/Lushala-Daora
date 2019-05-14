@@ -1,7 +1,7 @@
 import sys
 
 if len(sys.argv) == 2 and sys.argv[1] == '-h':
-    print("python3 Main.py <ip> <port> <database> <user> <password> <config_id>(config.py) <begin_id>(optional)")
+    print("python3 main.py <ip> <port> <database> <user> <password> <config_id>(config.py) <begin_id>(optional)")
     sys.exit()
 elif len(sys.argv) < 7 or len(sys.argv) > 8:
     print("Wrong parameters!")
@@ -40,15 +40,15 @@ conf = configs[config_id]
 
 print('Database connected.')
 
-processing_thread = Processing(conf['consumer_key'], conf['consumer_secret'], conf['access_token'],
+searching_thread = Processing(conf['consumer_key'], conf['consumer_secret'], conf['access_token'],
                                  conf['access_token_secret'], conf['twitter-geo-latlngrad'], str(config_id), db, begin_id)
 streaming_thread = Streaming(conf['consumer_key'], conf['consumer_secret'],
                                              conf['access_token'], conf['access_token_secret'], conf['twitter-geo-rec'], str(config_id), db)
-print('Processing thread created.')
+print('Searching thread created.')
 print('Streaming thread created.')
 
 # Running two threads at the same time
-processing_thread.start()
+searching_thread.start()
 streaming_thread.start()
 
 print("Streaming. Open " + ip + ":" + port + "/_utils/#database/" + database + "/_all_docs to see process.")
