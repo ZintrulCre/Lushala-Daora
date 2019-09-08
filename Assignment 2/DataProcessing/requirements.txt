@@ -1,0 +1,14 @@
+certifi
+chardet
+CouchDB
+idna
+nltk
+oauthlib
+PySocks
+requests
+requests-oauthlib
+six
+textblob
+tweepy
+TwitterAPI
+urllib3

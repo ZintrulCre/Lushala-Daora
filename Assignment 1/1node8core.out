@@ -1,0 +1,38 @@
+------1 node 8 cores------
+#tweets grouped by zone:
+    - Other: 2098056 posts
+    - C2: 145073 posts
+    - B2: 79575 posts
+    - C3: 53343 posts
+    - B3: 26585 posts
+    - C4: 19704 posts
+    - B1: 16505 posts
+    - D4: 14486 posts
+    - D3: 13391 posts
+    - C1: 8427 posts
+    - B4: 5455 posts
+    - A3: 5038 posts
+    - A2: 4153 posts
+    - C5: 4108 posts
+    - D5: 3259 posts
+    - A1: 2533 posts
+    - A4: 309 posts
+#hashtags grouped by zone:
+    - Other:  [('auspol', 15615), ('melbourne', 6823), ('funkykidsradio', 4418), ('travel', 4389), ('angkasamara', 4084)]
+    - C2:  [('melbourne', 9771), ('australia', 1501), ('job', 1388), ('jobs', 964), ('job:', 501)]
+    - B2:  [('melbourne', 812), ('australia', 152), ('auspol', 127), ('nashsnewvideo', 123), ('brunswick', 93)]
+    - C3:  [('melbourne', 472), ('australia', 143), ('coffee', 100), ('oneorigin_specialtycoffee', 71), ('food', 67)]
+    - B3:  [('melbourne', 157), ('australia', 59), ('fitness', 54), ('pocus', 50), ('britonedirection', 42)]
+    - C4:  [('alishas1million', 96), ('melbourne', 80), ('auspol', 49), ('savedallas', 46), ('kca', 43)]
+    - B1:  [('melbourne', 170), ('kca', 69), ('australia', 56), ('vote5sos', 55), ('bds', 49)]
+    - D4:  [('nowplaying', 1730), ('melbourne', 28), ('dandenong.', 27), ('job', 26), ('jobs', 22)]
+    - D3:  [('melbourne', 76), ('beach', 57), ('joesuggtofollowconniekirk', 28), ('summer', 26), ('australia', 23)]
+    - C1:  [('jackdm', 90), ('mashnewvideo', 57), ('melbourne', 50), ('lifeofnash', 43), ('3daysforexpelledmovie', 40)]
+    - B4:  [('melbourne', 32), ('smallzywelcomeshome5sos', 26), ('fire', 19), ('vicfires', 19), ('socialmedia', 18)]
+    - A3:  [('vicfires', 19), ('saveconstantine', 12), ('epping.', 11), ('raw', 7), ('love', 7)]
+    - A2:  [('krazykristmas', 165), ('egsholidaygiveaway', 57), ('rcl1milliongiveaway', 53), ('vdaywithbeth', 37), ('craigieburn.', 31)]
+    - C5:  [('melbourne', 53), ('australia', 17), ('dandenongs', 13), ('1000steps', 11), ('travel', 10)]
+    - D5:  [('cat,', 25), ('somebodytocon', 23), ('melbourne', 22), ('lost', 20), ('voteukvampettes', 18)]
+    - A1:  [('tattoo', 11), ('melbourne', 11), ('worldjudo2014', 9), ('design', 8), ('judo', 8)]
+    - A4:  [('lnp', 4), ('qldvotes', 3), ('vicfires', 3), ('birthday', 3), ('laughterclass', 2)]
+total time: 53.28657841682434
