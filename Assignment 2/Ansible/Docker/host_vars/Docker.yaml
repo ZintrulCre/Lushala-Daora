@@ -1,8 +1,0 @@
----
-volumes:
-  - device: /dev/vdb
-    mountpoint: /var/lib/docker
-  - device: /dev/vdb
-    mountpoint: /data
-
-wp_dir: Docker
